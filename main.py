@@ -60,7 +60,7 @@ class ThineTutor(BoxLayout):
             req = urllib.request.Request(url, data=json.dumps(data).encode('utf-8'), headers=headers)
             with urllib.request.urlopen(req, context=ctx) as response:
                 result = json.loads(response.read().decode('utf-8'))
-                reply = result['choices']['message']['content']
+                reply = result['choices'][0]['message']['content']
                 self.answer_label.text = reply
         except Exception as e:
             self.answer_label.text = f"Error: {str(e)}"
